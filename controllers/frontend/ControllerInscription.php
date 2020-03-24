@@ -36,19 +36,22 @@ class ControllerInscription
 				$pseudo = htmlspecialchars($_POST['pseudo']); 
 				$mail = htmlspecialchars($_POST['email']);
 				$mail2 = htmlspecialchars($_POST['email2']);
-				$password = hash('sha256', $_POST['pwd']);
-				$password2 = hash('sha256', $_POST['pwd2']);
-
+				$password = htmlspecialchars($_POST['pwd']));
+				$password2 = htmlspecialchars($_POST['pwd2']));
 				$pseudolength = strlen($pseudo);
-				if($pseudolength <= 255)
+
+		
+				if($password == $password2)
 				{
-					if(filter_var($mail, FILTER_VALIDATE_EMAIL))
-					{	
-						if($mail == $mail2) // compare if both mail are egal
-						{
-							if(!$users->getUserMail($mail) > 0) // check if the mail don't exist in BDD
+					$pass_hache = password_hash($password, PASSWORD_DEFAULT);
+				
+					if($pseudolength <= 255)
+					{
+						if(filter_var($mail, FILTER_VALIDATE_EMAIL))
+						{	
+							if($mail == $mail2) // compare if both mail are egal
 							{
-								if($password == $password2) 
+								if(!$users->getUserMail($mail) > 0) // check if the mail don't exist in BDD
 								{
 									$lengthKey = 10;
 									$key = "";
@@ -58,7 +61,7 @@ class ControllerInscription
 									}
 									$newUser = new Users(['pseudo' => $pseudo,
 														 'mail' => $mail,
-														 'password' => $password,
+														 'password' => $pass_hache,
 														 'role' => 'utilisateur',
 														 'confirmKey' => $key]);
 									$users->add($newUser);
@@ -81,33 +84,32 @@ class ControllerInscription
 									   	</body>
 									</html>';	
 									mail($mail, 'Inscription au blog de Jean Forteroche', $message, $header);	
-								}
-							
+								}											
+
 								else
 								{
-									$errorMsg = 'Vos mots de passe ne correspondent pas';
-								}							
-							}		
-
+									$errorMsg = 'Cet email est déjà utilisé, veuillez en choisir un autre ou vous connecter !';
+								}
+							}
 							else
 							{
-								$errorMsg = 'Cet email est déjà utilisé, veuillez en choisir un autre ou vous connecter !';
+								$errorMsg = 'Vos email ne correspondent pas !';
 							}
 						}
 						else
 						{
-							$errorMsg = 'Vos email ne correspondent pas !';
-						}
+							$errorMsg = 'Votre email n\'est pas valide !'; 
+						}	
 					}
 					else
 					{
-						$errorMsg = 'Votre email n\'est pas valide !'; 
-					}	
+						$errorMsg = 'Votre pseudo ne doit pas depasser 255 caractères !';
+					}
 				}
 				else
 				{
-					$errorMsg = 'Votre pseudo ne doit pas depasser 255 caractères !';
-				}
+					$errorMsg = 'Vos mots de passe ne correspondent pas';
+				}		
 			}	
 
 			else
