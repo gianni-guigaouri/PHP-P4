@@ -1,0 +1,371 @@
+
+/* general rule */
+
+h1 
+{
+font-size: 3rem !important;
+}
+
+h1, h2, h3, h4, h5, h6 
+{
+font-weight: 600 !important;
+
+}
+
+small
+{
+    font-size: 0.9em;
+}
+
+a
+{
+    color:#ffab40;
+}
+
+a:hover 
+{
+    color: initial !important;
+    text-decoration: none !important;
+}
+
+i
+{
+    height: 0px !important;
+    line-height: 0px;
+    display:block !important;
+}
+
+.card-action .glyph-edit
+{
+    display:inline-block !important;
+}
+
+
+.editBtn
+{
+
+    width: 100%;
+    max-width: 330px;
+    margin: auto;
+}
+
+.btn-link:hover 
+{
+    color: initial !important;
+    text-decoration: none !important;
+
+}
+
+
+.btn, .btn-lg
+{
+    background-color: #34495e !important;
+}
+
+
+body
+{
+    font-family: Tahoma, Geneva, sans-serif;
+    position: relative;
+    margin: 0;
+    padding-bottom: 8rem;
+    min-height: 100%;
+}
+
+
+.borderShadowBox
+{   
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px 
+    rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+    border: 0px 0px 1px 0px solid rgba(0,0,0,.125);
+}  
+
+/* end general rule */
+
+
+
+
+/* navbar section */
+
+.nav
+{
+    height: 100px !important;
+    
+}    
+
+nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+        height: auto;
+        line-height:initial;
+    }
+
+nav ul li.active
+{
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+
+nav ul a:hover {
+    background-color:rgba(0, 0, 0, 0)  !important;
+}
+
+nav i 
+{
+    font-size: 21px;
+}
+
+
+.navbar
+{
+    background-color: white;
+    box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+    padding: .8rem 1rem !important;
+}
+
+.navbar li
+{
+    font-size: 18px;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+ color: white;
+ }
+
+.navbar-brand
+{
+    font-size: 25px;
+    font-weight: 700;
+    color: #563da5 !important;
+}
+
+.navbar-nav
+{
+    margin-top: 2px;
+}
+
+.menuDrop
+{
+background-color: white !important;
+border: none !important;
+box-shadow: none !important;
+color: black !important;
+}
+
+.dropdown-toggle:focus
+{
+    outline:0;
+}
+
+/* end navbar section
+
+
+
+/* Jumbotron section */
+
+.jumbotron
+{
+    background-image: url(https://giannikosta.com/public/images/backA.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px 
+    rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+    border: 0px 0px 1px 0px solid rgba(0,0,0,.125);
+}
+
+.jumbotron .lead-Padding
+{
+    margin-bottom: 50px;
+    color:rgb(193, 192, 180);
+    font-size: 1.3rem;
+}
+
+
+.jumbotron .colorTitle
+{
+    color: white;
+    padding-bottom: 12px;
+}
+
+
+.jumbotron--home
+{   
+    margin-bottom: 20px !important;
+}
+
+
+
+.jumbotron--div--padding
+{
+    padding:30px;
+}
+
+
+/* end jumbotron section */
+
+
+
+/* rule of differente view */
+
+.viewAccueil, .viewArticle, .viewAdmin, .viewInscription,
+.viewValidation
+{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: 100%;
+}
+
+
+.viewAdmin .row-padding, .col-padding
+{
+  padding:15px;
+}
+
+
+.container--margintop
+{
+    margin-top: 50px;
+}
+
+
+.card-header--padding-top
+{
+    padding-top: 10px;
+}
+
+
+.card-header .date-Edit
+{
+    font-size: 14px;
+}
+
+
+
+.container-subscribe-success .row
+{
+    min-height:400px;
+}
+
+
+.container-single-news
+{
+    padding-bottom: 40px;
+}
+
+
+/* Form section */
+
+.form-group
+{
+    padding:20px;
+    margin-top:15px;
+    background-color:rgba(34, 42, 109, 0.06);
+}
+
+.form-signin 
+{
+    width: 100%;
+   max-width: 330px; 
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox 
+{
+    font-weight: 400;
+}
+.form-signin .form-control 
+{
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus 
+{
+    z-index: 2;
+}
+.form-signin input[type="email"] 
+{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+.form-signin input[type="password"]
+{
+    margin-bottom: 0px !important;
+}
+
+/* end form section */
+
+
+/* table admin page */
+
+.table-responsive .padding-link
+{
+    padding: 10px;
+}
+
+
+/*table end */
+
+
+ 
+/* footer section */
+
+.footer
+{
+    position: absolute;
+    min-height: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #0c1b38;
+    text-align: center;
+}
+
+.footer span
+{
+    color: white;
+}
+
+/* end footer section */
+
+
+/* Media queries */
+
+@media (min-width: 576px)
+{
+    .jumbotron 
+    {
+        padding: 50px !important;
+        margin-bottom: initial !important;
+    }
+}
+
+
+@media (min-width: 200px)
+{
+    i
+    {
+        padding-bottom: 15px !important;
+    }
+}
+
+@media (min-width: 600px)
+{.jumbotron--home
+    {
+        padding: 11.5rem 2rem !important;
+    }
+}
+
+
