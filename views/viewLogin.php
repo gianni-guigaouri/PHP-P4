@@ -11,7 +11,7 @@ $this->_t = 'Login';
             </div>
             <?php endif ?>
         <label for="inputEmail" class="sr-only">Adresse Email</label>
-        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="pseudo" required autofocus> 
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="email" required autofocus> 
         <br>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" name="pwd" placeholder="Password" required>

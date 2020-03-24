@@ -42,9 +42,9 @@ class ControllerLogin
 			{	
 				$user = $users->getUserLogin(htmlspecialchars($_POST['email']));
 
-				$pass = hash('sha256', $_POST['pwd']);
+				$pass = password_verify($_POST['pwd'], $user->password());
 
-					if($pass != $user->password())
+					if(!$pass)
 					{	
 						throw new Exception('Identifiant ou mot de passe incorrect');	
 					}		

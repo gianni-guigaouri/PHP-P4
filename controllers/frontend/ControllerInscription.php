@@ -36,8 +36,8 @@ class ControllerInscription
 				$pseudo = htmlspecialchars($_POST['pseudo']); 
 				$mail = htmlspecialchars($_POST['email']);
 				$mail2 = htmlspecialchars($_POST['email2']);
-				$password = htmlspecialchars($_POST['pwd']));
-				$password2 = htmlspecialchars($_POST['pwd2']));
+				$password = htmlspecialchars($_POST['pwd']);
+				$password2 = htmlspecialchars($_POST['pwd2']);
 				$pseudolength = strlen($pseudo);
 
 		
