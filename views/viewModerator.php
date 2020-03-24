@@ -36,8 +36,9 @@ $this->_t = 'Moderateur';
                     <p class="card-text">
 	                    <?= nl2br($comments->content()) ;?>
 	                    <p>
-	                    <a href="<?= URL ?>moderator-comments-validate-<?=$comments->id()?>">Accepter</a> |
-	                    <a href="<?= URL ?>moderator-comments-delete-<?=$comments->id()?>">Refuser</a>
+	                    <a href="<?= URL ?>moderator-comments-validate-<?=$comments->id()?>-<?=$_SESSION['token']?>">Accepter</a> |
+	                    <a href="<?= URL ?>moderator-comments-delete-<?=$comments->id()?>-<?=$_SESSION['token']?>">
+	                    Refuser</a>
 	                    </p>
                     </p> 
                 </div>
