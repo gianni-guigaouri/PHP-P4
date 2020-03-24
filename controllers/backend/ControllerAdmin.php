@@ -93,31 +93,37 @@ class ControllerAdmin
 
 				if($this->action() == 'comments')
 				{
-					if($this->mode() == 'validate')
+					if(isset($_GET['token']))
 					{	
-						$comments = new Comments(
-						[
-							'state' => 'valid',
-							'id' => $this->idComment()
-						]);
-						$this->message = 'Le commentaire a bien été accepté';
-						$commentsManager->update($comments);
-						$message = $this->message;
-						$this->_view = new View('Admin');
-						$this->_view->generate(array(
-						'manager' => $manager, 'commentsManager' => $commentsManager,
-						'message' => $message));
-					}
-					if($this->mode() == 'delete')
-					{
-						$comments = $commentsManager->delete((int) $this->idComment());
-						$this->message = 'Le commentaire a bien été supprimée !';
-						$message = $this->message;
-						$this->_view = new View('Admin');
-						$this->_view->generate(array(
-						'manager' => $manager, 'commentsManager' => $commentsManager,
-						'message' => $message));							
-					}	
+						if($_GET['token'] == $_SESSION['token'])
+						{	
+							if($this->mode() == 'validate')
+							{	
+								$comments = new Comments(
+								[
+									'state' => 'valid',
+									'id' => $this->idComment()
+								]);
+								$this->message = 'Le commentaire a bien été accepté';
+								$commentsManager->update($comments);
+								$message = $this->message;
+								$this->_view = new View('Admin');
+								$this->_view->generate(array(
+								'manager' => $manager, 'commentsManager' => $commentsManager,
+								'message' => $message));
+							}
+							if($this->mode() == 'delete')
+							{
+								$comments = $commentsManager->delete((int) $this->idComment());
+								$this->message = 'Le commentaire a bien été supprimée !';
+								$message = $this->message;
+								$this->_view = new View('Admin');
+								$this->_view->generate(array(
+								'manager' => $manager, 'commentsManager' => $commentsManager,
+								'message' => $message));							
+							}
+						}
+					}		
 				}	
 
 			}
