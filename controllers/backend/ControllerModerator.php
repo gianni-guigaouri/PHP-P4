@@ -46,34 +46,39 @@ class ControllerModerator
 			
 		if($this->action() != null)
 		{	
-			
-			if($this->action() == 'comments')
-			{
-				if($this->mode() == 'validate')
-				{	
-					$comments = new Comments(
-					[
-						'state' => 'valid',
-						'id' => $this->idComment()
-					]);
-					$this->message = 'Le commentaire a bien été accepté';
-					$commentsManager->update($comments);
-					$message = $this->message;
-					$this->_view = new View('Moderator');
-					$this->_view->generate(array(
-					'manager' => $manager, 'commentsManager' => $commentsManager,
-					'message' => $message));
+			if(isset($_GET['token']))
+			{	
+				if($_GET['token'] == $_SESSION['token'])
+				{				
+					if($this->action() == 'comments')
+					{
+						if($this->mode() == 'validate')
+						{	
+							$comments = new Comments(
+							[
+								'state' => 'valid',
+								'id' => $this->idComment()
+							]);
+							$this->message = 'Le commentaire a bien été accepté';
+							$commentsManager->update($comments);
+							$message = $this->message;
+							$this->_view = new View('Moderator');
+							$this->_view->generate(array(
+							'manager' => $manager, 'commentsManager' => $commentsManager,
+							'message' => $message));
+						}
+						elseif($this->mode() == 'delete')
+						{
+							$comments = $commentsManager->delete((int) $this->idComment());
+							$this->message = 'Le commentaire a bien été supprimée !';
+							$message = $this->message;
+							$this->_view = new View('Moderator');
+							$this->_view->generate(array(
+							'manager' => $manager, 'commentsManager' => $commentsManager,
+							'message' => $message));							
+						}	
+					}	
 				}
-				elseif($this->mode() == 'delete')
-				{
-					$comments = $commentsManager->delete((int) $this->idComment());
-					$this->message = 'Le commentaire a bien été supprimée !';
-					$message = $this->message;
-					$this->_view = new View('Moderator');
-					$this->_view->generate(array(
-					'manager' => $manager, 'commentsManager' => $commentsManager,
-					'message' => $message));							
-				}	
 			}	
 		}
 
