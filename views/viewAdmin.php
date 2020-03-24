@@ -92,7 +92,7 @@ $this->_t = 'Administration';
 			  			<td><?= $news->addDate()->format('d/m/Y à H\hi') ?></td>
 			  			<td><?= $news->addDate() == $news->editDate() ? '-' : $news->editDate()->format('d/m/Y à H\hi')?></td> 
 			  			<td>
-			  				<a class="padding-link" href="<?=URL?>admin-edit-<?=$news->id()?>">Modifier</a> 
+			  				<a class="padding-link" href="<?=URL?>admin-edit-<?=$news->id()?>-<?=$_SESSION['token']?>">Modifier</a> 
 			  				<button type="button" class="btn btn-link btn-perso btn-lg" data-toggle="modal" data-target="#exampleModal">Supprimer</button>
 			  			</td>
 			  		</tr>
@@ -121,7 +121,7 @@ $this->_t = 'Administration';
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-perso" data-dismiss="modal">Close</button>
-        <a class="btn btn-perso btn-primary"href="<?= URL ?>admin-delete-<?= $news->id()?>">Supprimer</a>
+        <a class="btn btn-perso btn-primary"href="<?= URL ?>admin-delete-<?= $news->id()?>-<?=$_SESSION['token']?>">Supprimer</a>
       </div>
     </div>
   </div>

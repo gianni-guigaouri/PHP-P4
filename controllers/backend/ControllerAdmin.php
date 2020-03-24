@@ -71,32 +71,34 @@ class ControllerAdmin
 			
 			if($this->action() != null)
 			{					
-				if($this->action() == 'edit')
+				if(isset($_GET['token']))
 				{	
-					$news = $manager->getUnique((int) $this->id());
-					$this->_view = new View('Admin');
-					$this->_view->generate(array(
-					'manager' => $manager, 'commentsManager' => $commentsManager,
-					'news' => $news));	
-				}
-
-				if($this->action() == 'delete')
-				{
-					$news = $manager->delete((int) $this->id());
-					$this->message = 'La news a bien été supprimée !';
-					$message = $this->message;
-					$this->_view = new View('Admin');
-					$this->_view->generate(array(
-				'manager' => $manager, 'commentsManager' => $commentsManager,
-				'message' => $message));
-				}	
-
-				if($this->action() == 'comments')
-				{
-					if(isset($_GET['token']))
+					if($_GET['token'] == $_SESSION['token'])
 					{	
-						if($_GET['token'] == $_SESSION['token'])
+
+						if($this->action() == 'edit')
 						{	
+							$news = $manager->getUnique((int) $this->id());
+							$this->_view = new View('Admin');
+							$this->_view->generate(array(
+							'manager' => $manager, 'commentsManager' => $commentsManager,
+							'news' => $news));	
+						}
+
+						if($this->action() == 'delete')
+						{
+							$news = $manager->delete((int) $this->id());
+							$this->message = 'La news a bien été supprimée !';
+							$message = $this->message;
+							$this->_view = new View('Admin');
+							$this->_view->generate(array(
+						'manager' => $manager, 'commentsManager' => $commentsManager,
+						'message' => $message));
+						}	
+
+						if($this->action() == 'comments')
+						{
+							
 							if($this->mode() == 'validate')
 							{	
 								$comments = new Comments(
@@ -121,11 +123,11 @@ class ControllerAdmin
 								$this->_view->generate(array(
 								'manager' => $manager, 'commentsManager' => $commentsManager,
 								'message' => $message));							
-							}
-						}
-					}		
-				}	
-
+							}								
+									
+						}	
+					}	
+				}
 			}
 
 
