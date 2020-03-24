@@ -79,7 +79,7 @@ class ControllerInscription
 									   		<div align="center">
 									   		Bonjour '. $pseudo .',<br /> 
 									   		Merci de confirmer votre adresse mail.<br />
-									   		<a href="http://localhost/validation-'.$key.'">Cliquez sur ce lien</a>
+									   		<a href="'.URL.'/validation-'.$key.'">Cliquez sur ce lien</a>
 									   		</div>
 									   	</body>
 									</html>';	
