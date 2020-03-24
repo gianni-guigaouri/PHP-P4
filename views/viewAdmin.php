@@ -66,7 +66,7 @@ $this->_t = 'Administration';
                     <p class="card-text">
                     <?= nl2br($comments->content()) ;?>
                     <p>
-                    <a href="<?= URL ?>admin-comments-validate-<?=$comments->id()?>">Accepter</a> |
+                    <a href="<?= URL ?>admin-comments-validate-<?=$comments->id()?>-<?=$_SESSION['token']?>">Accepter</a> |
                     <a href="<?= URL ?>admin-comments-delete-<?=$comments->id()?>">Refuser</a>
                     </p>
                     </p> 
