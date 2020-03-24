@@ -49,7 +49,7 @@ class UsersManagerPDO
 
 	public function getUserLogin($mail) 
 	{
-		$request = $this->db->prepare('SELECT password, role FROM users WHERE mail = :mail');
+		$request = $this->db->prepare('SELECT password, role, pseudo FROM users WHERE mail = :mail');
 		$request->bindValue(':mail', $mail);
 		$request->execute();
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Users');

@@ -52,7 +52,7 @@ $this->_titleJumbo = $news->title();
                         <?= $message ?>
                         </div>
                         <?php endif ?> 
-                        <input type="text" class="form-control" name="author" value="" placeholder="Pseudo" />
+                        <input type="text" class="form-control" name="author" value="<?= $_SESSION['pseudo']?>"/>
                         <input type="text" class="form-control" name="content" id="textarea" placeholder="Votre commentaire..." /> <br />
                         <input type="hidden" name="token" id="token" value="<?= $_SESSION['token'] ?>" />
                         <button class="btn btn-lg btn-primary btn-block editBtn btn-perso" type="submit" value="Ajouter"name="send">Ajouter</button>

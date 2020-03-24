@@ -26,7 +26,8 @@ $this->_t = 'Administration';
 						
 						<input type="hidden" name="token" id="token" value="<?= $_SESSION['token'] ?>" />
 
-						<input type="text" class="form-control" name="author" value="<?php if (isset($news)) echo $news->author(); ?>" placeholder="Auteur" required/><br />
+						<input type="text" class="form-control" name="author" 
+						value="<?php if (isset($news)):?><?=$news->author();?><?php else: ?> <?= $_SESSION['pseudo'];?><?php endif ?>" required/><br />
 						
 						<input type="text" class="form-control" name="title" value="<?php if (isset($news)) echo $news->title(); ?>" placeholder="Titre" required/><br />
 						

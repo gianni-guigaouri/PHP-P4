@@ -50,6 +50,7 @@ class ControllerLogin
 					}		
 					else
 					{	
+						$_SESSION['pseudo'] = $user->pseudo();
 						$_SESSION['token'] = md5(time()*rand(175, 658));
 
 						if($user->role() == 'moderator')
