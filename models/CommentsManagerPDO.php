@@ -5,9 +5,9 @@ class CommentsManagerPDO
 
 	protected $db;
 
-	public function __construct(PDO $db) 
+	public function __construct() 
 	{
-		$this->db = $db;
+		$this->db = DBFactory::getMySqlConnexionWithPDO();
 	}
 
 	public function add(Comments $comments) 

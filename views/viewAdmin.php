@@ -25,6 +25,7 @@ $this->_t = 'Administration';
 	            		<?php endif ?>
 						
 						<input type="hidden" name="token" id="token" value="<?= $_SESSION['token'] ?>" />
+						<input type="hidden" name="userId" id="userId" value="<?= $_SESSION['userId'] ?>" />
 
 						<input type="text" class="form-control" name="author" 
 						value="<?php if (isset($news)):?><?=$news->author();?><?php else: ?> <?= $_SESSION['pseudo'];?><?php endif ?>" required/><br />

@@ -4,9 +4,9 @@ class UsersManagerPDO
 {
 	protected $db;
 
-	public function __construct(PDO $db) 
+	public function __construct() 
 	{
-		$this->db = $db;
+		$this->db = DBFactory::getMySqlConnexionWithPDO();
 	}
 
 	public function add(Users $users) 
@@ -49,7 +49,7 @@ class UsersManagerPDO
 
 	public function getUserLogin($mail) 
 	{
-		$request = $this->db->prepare('SELECT password, role, pseudo FROM users WHERE mail = :mail');
+		$request = $this->db->prepare('SELECT id, password, role, pseudo FROM users WHERE mail = :mail');
 		$request->bindValue(':mail', $mail);
 		$request->execute();
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Users');

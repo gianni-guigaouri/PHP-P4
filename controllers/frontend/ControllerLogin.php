@@ -6,7 +6,6 @@ require_once('views/View.php');
 
 class ControllerLogin
 {
-	protected $db;
 	private $_view;
 
 	public function __construct($url)
@@ -17,10 +16,9 @@ class ControllerLogin
 
 	public function loginPage()
 	{	
-		$this->db = DBFactory::getMySqlConnexionWithPDO();
-		$manager = new NewsManagerPDO($this->db);
-		$commentsManager = new CommentsManagerPDO($this->db);
-		$users = new UsersManagerPDO($this->db);
+		$manager = new NewsManagerPDO();
+		$commentsManager = new CommentsManagerPDO();
+		$users = new UsersManagerPDO();
 
 		if(isset($_SESSION['users']))
 		{
@@ -51,6 +49,7 @@ class ControllerLogin
 					else
 					{	
 						$_SESSION['pseudo'] = $user->pseudo();
+						$_SESSION['userId'] = $user->id();
 						$_SESSION['token'] = md5(time()*rand(175, 658));
 
 						if($user->role() == 'moderator')

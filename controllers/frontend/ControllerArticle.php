@@ -5,7 +5,6 @@ require_once('views/View.php');
 
 class ControllerArticle
 {
-	protected $db;
 	protected $id;
 	protected $author;
 	protected $message;
@@ -39,9 +38,8 @@ class ControllerArticle
 	public function articlePage()
 	{	
 		//init the manager class for connect with the BDD
-		$this->db = DBFactory::getMySqlConnexionWithPDO();
-		$manager = new NewsManagerPDO($this->db);
-		$commentsManager = new CommentsManagerPDO($this->db);
+		$manager = new NewsManagerPDO();
+		$commentsManager = new CommentsManagerPDO();
 
 		$news = $manager->getUnique((int) $this->id()); // get the single news with the id 
 		$countC = $commentsManager->count($this->id());

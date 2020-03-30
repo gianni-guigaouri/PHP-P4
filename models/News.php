@@ -4,6 +4,7 @@ class News
 {
 
 	protected $id,
+			  $userId,
 			  $author,
 			  $title,
 			  $content,
@@ -48,7 +49,11 @@ class News
 		$this->id = (int) $id;
 	}
 
-	
+	public function setUserId($userId) 
+	{
+		$this->userId = (int) $userId;
+	}
+
 	public function setAuthor($author) 
 	{
 		$this->author = $author;
@@ -82,6 +87,7 @@ class News
 
 	public function errors() {return $this->errors;}
 	public function id() {return $this->id;}
+	public function userId() {return $this->userId;}
 	public function author() {return $this->author;}
 	public function title() {return $this->title;}
 	public function content() {return $this->content;}

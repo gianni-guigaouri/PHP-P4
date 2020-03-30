@@ -6,7 +6,6 @@ require_once('views/View.php');
 
 class ControllerLogout
 {
-	protected $db;
 	private $_view;
 
 	public function __construct($url)
@@ -20,9 +19,8 @@ class ControllerLogout
 
 	public function logout()
 	{	
-		$this->db = DBFactory::getMySqlConnexionWithPDO();
-		$manager = new NewsManagerPDO($this->db);
-		$commentsManager = new CommentsManagerPDO($this->db);
+		$manager = new NewsManagerPDO();
+		$commentsManager = new CommentsManagerPDO();
 	
 		if(isset($_SESSION['users']))
 		{	

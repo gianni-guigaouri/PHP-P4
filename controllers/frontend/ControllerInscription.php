@@ -6,7 +6,6 @@ require_once('views/View.php');
 
 class ControllerInscription
 {
-	protected $db;
 	private $_view;
 
 	public function __construct($url)
@@ -17,10 +16,9 @@ class ControllerInscription
 
 	public function inscriptionPage()
 	{	
-		$this->db = DBFactory::getMySqlConnexionWithPDO();
-		$manager = new NewsManagerPDO($this->db);
-		$users = new UsersManagerPDO($this->db);
-		$commentsManager = new CommentsManagerPDO($this->db);
+		$manager = new NewsManagerPDO();
+		$users = new UsersManagerPDO();
+		$commentsManager = new CommentsManagerPDO();
 
 		if(isset($_SESSION['users']))
 		{	

@@ -5,8 +5,8 @@ require_once('views/View.php');
 
 class ControllerAdmin
 {
-	protected $db;
 	protected $id;
+	protected $userId;
 	protected $IdComment;
 	protected $author;
 	protected $title;
@@ -25,6 +25,11 @@ class ControllerAdmin
 		{
 		$this->setId($_GET['id']);
 		}
+		if(isset($_POST['userId']))
+		{
+		$this->setUserId($_POST['userId']);
+		}
+
 		if(isset($_POST['id']))
 		{
 		$this->setId($_POST['id']);
@@ -64,10 +69,9 @@ class ControllerAdmin
 
 	public function adminPage()
 	{	
-		$this->db = DBFactory::getMySqlConnexionWithPDO();
-		$manager = new NewsManagerPDO($this->db);
-		$commentsManager = new CommentsManagerPDO($this->db);
-		$users = new UsersManagerPDO($this->db);
+		$manager = new NewsManagerPDO();
+		$commentsManager = new CommentsManagerPDO();
+		$users = new UsersManagerPDO();
 			
 			if($this->action() != null)
 			{					
@@ -138,33 +142,42 @@ class ControllerAdmin
 			{	
 				if($_POST['token'] == $_SESSION['token'])
 				{
-					$news = new News(
-					[
-							'author' => $this->author(),
-							'title' => $this->title(),
-							'content' => $this->content()
-						]
-					);
-					
-					if($this->id() != null)
+					if($this->userId() != null)
+					{	
+						$news = new News(
+						[
+								'author' => $this->author(),
+								'title' => $this->title(),
+								'content' => $this->content(),
+								'userId' => $this->userId()
+							]
+						);
+						
+						if($this->id() != null)
 
-					{
-					$news->setId($this->id());
-					}
+						{
+						$news->setId($this->id());
+						}
 
-					if($news->isValid())
-					{
-						$manager->save($news);
-					
-						$this->message = $news->isNew() ? 
-						'La news a bien été ajoutée !' : 
-						'La news a bien été modifiée !';
+						if($news->isValid())
+						{
+							$manager->save($news);
+						
+							$this->message = $news->isNew() ? 
+							'La news a bien été ajoutée !' : 
+							'La news a bien été modifiée !';
+						}
+						$message = $this->message;
+						$this->_view = new View('admin');
+						$this->_view->generate(array(
+						'manager' => $manager, 'commentsManager' => $commentsManager,
+					 	'message' => $message));
 					}
-					$message = $this->message;
-					$this->_view = new View('admin');
-					$this->_view->generate(array(
-					'manager' => $manager, 'commentsManager' => $commentsManager,
-				 	'message' => $message));
+					else
+					{
+					$this->_view = new View('Admin');
+					$this->_view->generate(array('manager' => $manager, 'commentsManager' => $commentsManager));						
+					}				
 				}
 
 			}	
@@ -201,6 +214,11 @@ class ControllerAdmin
 	public function setId($id) 
 	{
 		$this->id = (int) $id;
+	}
+
+	public function setUserId($userId) 
+	{
+		$this->userId = (int) $userId;
 	}
 
 	public function setIdComment($idComment) 
@@ -247,6 +265,7 @@ class ControllerAdmin
 
 
 	public function id(){return $this->id;}
+	public function userId(){return $this->userId;}
 	public function idComment(){return $this->idComment;}
 	public function author(){return $this->author;}
 	public function title(){return $this->title;}

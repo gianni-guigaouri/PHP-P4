@@ -5,16 +5,17 @@ class NewsManagerPDO  extends NewsManager
 
 	protected $db;
 
-	public function __construct(PDO $db) 
+	public function __construct() 
 	{
-		$this->db = $db;
-	}
+		$this->db = DBFactory::getMySqlConnexionWithPDO();
+	}	
 
 
 	protected function add(News $news) 
 	{
-		$request = $this->db->prepare('INSERT INTO news(author, title, content, addDate, editDate) VALUES(:author, :title, :content, NOW(), NOW())');
+		$request = $this->db->prepare('INSERT INTO news(userId, author, title, content, addDate, editDate) VALUES(:userId, :author, :title, :content, NOW(), NOW())');
 
+		$request->bindValue(':userId', $news->userId(), PDO::PARAM_INT);
 		$request->bindValue(':author', $news->author());
 		$request->bindValue(':title', $news->title());
 		$request->bindValue(':content', $news->content());

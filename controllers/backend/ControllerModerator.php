@@ -5,7 +5,6 @@ require_once('views/View.php');
 
 class ControllerModerator
 {
-	protected $db;
 	protected $IdComment;
 	protected $action;
 	protected $mode;
@@ -39,10 +38,9 @@ class ControllerModerator
 
 	public function moderatorPage()
 	{	
-		$this->db = DBFactory::getMySqlConnexionWithPDO();
-		$manager = new NewsManagerPDO($this->db);
-		$commentsManager = new CommentsManagerPDO($this->db);
-		$users = new UsersManagerPDO($this->db);
+		$manager = new NewsManagerPDO();
+		$commentsManager = new CommentsManagerPDO();
+		$users = new UsersManagerPDO();
 			
 		if($this->action() != null)
 		{	
